@@ -7,9 +7,9 @@ const bot = new TelegramBot(TOKEN, {
     polling: true
 });
 const port = process.env.PORT || 5000;
-const gameName = "test_webapp_view_bot";
+const gameName = "testwebapp";
 const queries = {};
-server.use(express.static(path.join(__dirname, 'test_webapp_view_bot')));
+server.use(express.static(path.join(__dirname, 'testwebapp')));
 bot.onText(/help/, (msg) => bot.sendMessage(msg.from.id, "Say /game if you want to play."));
 bot.onText(/start|game/, (msg) => bot.sendGame(msg.from.id, gameName));
 bot.on("callback_query", function (query) {
@@ -28,7 +28,7 @@ bot.on("inline_query", function (iq) {
     bot.answerInlineQuery(iq.id, [{
         type: "game",
         id: "0",
-        game_short_name: "testwebapp"
+        game_short_name: gameName
     }]);
 });
 server.get("/highscore/:score", function (req, res, next) {
