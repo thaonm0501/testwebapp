@@ -98,8 +98,8 @@
           unitySetLoaderProgressTo(progress);
         }).then((unityInstance) => {
           loadingScreen.style.display = "none";
-          fullscreenButton.onclick = () => {
-            unityInstance.SetFullscreen(1);
+          //fullscreenButton.onclick = () => {
+            //unityInstance.SetFullscreen(1);
           };
         }).catch((message) => {
           alert(message);
