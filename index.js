@@ -13,9 +13,14 @@ const { Keyboard } = require('telegram-keyboard')
 server.use(express.static(path.join(__dirname, 'testwebapp')));
 bot.onText(/help/, (msg) => bot.sendMessage(msg.from.id, "Say /game if you want to play."));
 bot.onText(/start|game/, (msg) => {
-	bot.sendGame(msg.from.id, gameName)
-	bot.sendMessage(msg.from.id, "Test Version", {		
-		 reply_markup: {
+	//bot.sendGame(msg.from.id, gameName)
+	
+	const imageUrl = "https://vnokia.net/images/wallpaper/2024/360x640/33/wallpaper_360x640_33_27.jpg"; // URL to the image
+	bot.sendPhoto(msg.from.id, imageUrl, {
+		caption: "This game made by Genify. \n Don't copyright."
+		+"\n 👯 Got friends? Invite them! Spread the fun and multiply your SEED together."
+		+"That’s all you need to know to get started. ⬇️",
+		reply_markup: {
             inline_keyboard: [
                 [{
                     text: 'Play Game Here',
@@ -25,6 +30,10 @@ bot.onText(/start|game/, (msg) => {
                 }]
             ]
         }
+	}).then(() => {
+		console.log('Image sent successfully');
+	}).catch(err => {
+		console.error('Error sending image:', err);
 	});
 });
 		
@@ -33,11 +42,11 @@ bot.on("callback_query", function (query) {
         bot.answerCallbackQuery(query.id, "Sorry, '" + query.game_short_name + "' is not available.");
     } else {
         queries[query.id] = query;
-        let gameurl = "https://thaonm0501.github.io/testwebapp/";
-        bot.answerCallbackQuery({
-            callback_query_id: query.id,
-            url: gameurl
-        });
+        //let gameurl = "https://thaonm0501.github.io/testwebapp/";
+        //bot.answerCallbackQuery({
+            //callback_query_id: query.id,
+            //url: gameurl
+        //});
 
     }
 });
