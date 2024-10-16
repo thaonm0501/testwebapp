@@ -34,7 +34,7 @@
       var progressBarFull = document.querySelector("#unity-progress-bar-full");
       var fullscreenButton = document.querySelector("#unity-fullscreen-button");
       var warningBanner = document.querySelector("#unity-warning");
-	  webapp.expand();
+	  //webapp.expand();
       // Shows a temporary message banner/ribbon for a few seconds, or
       // a permanent error message on top of the canvas if type=='error'.
       // If type=='warning', a yellow highlight color is used.
@@ -62,9 +62,9 @@
       var buildUrl = "Build";
       var loaderUrl = buildUrl + "/bb0d9ecdb05db3e84da20bd14a4f84dc.loader.js";
       var config = {
-        dataUrl: buildUrl + "/1bb2be776ff3c413a3fbf07f4dc1ffea.data",
-        frameworkUrl: buildUrl + "/a3b6e8173c350143228e73d7d20c4a4c.framework.js",
-        codeUrl: buildUrl + "/1d27d6b29e65e5644b643eb5b2aa73b2.wasm",
+        dataUrl: buildUrl + "/304590ab4be2ad416edf75853355c089.data",
+        frameworkUrl: buildUrl + "/9079de2414657eb874c282e4347f5514.framework.js",
+        codeUrl: buildUrl + "/90124ef84a0b985110457485bd6f0e71.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "Test Web App",
@@ -87,10 +87,12 @@
         canvas.className = "unity-mobile";
 		config.devicePixelRatio = 1;
       } else {
-		canvas.style.width = ((getHeight()-getHeight()*.1)*9/16)+"px";
-        canvas.style.height = (getHeight()-getHeight()*.1)+"px";
-		console.log('Width:  ' +  ((getHeight()-getHeight()*.1)*9/16) );
-		console.log('Height: ' +(getHeight()-getHeight()*.1) );
+		//canvas.style.width = ((getHeight())*9/16)+"px";
+        //canvas.style.height = (getHeight())+"px";
+		canvas.style.width = getWidth()+"px";
+        canvas.style.height = getHeight()+"px";
+		console.log('Width:  ' +  getWidth());
+		console.log('Height: ' +  getHeight());
       }
       loadingBar.style.display = "block";
 
@@ -110,7 +112,7 @@
             };
 
       document.body.appendChild(script);
-	  
+	  setTimeout(() => {  webapp.expand(); }, 500);
 	  function getWidth() {
   return Math.max(
     document.body.scrollWidth,
