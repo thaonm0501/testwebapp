@@ -34,7 +34,7 @@
       var progressBarFull = document.querySelector("#unity-progress-bar-full");
       var fullscreenButton = document.querySelector("#unity-fullscreen-button");
       var warningBanner = document.querySelector("#unity-warning");
-	  //webapp.expand();
+	  webapp.expand();
       // Shows a temporary message banner/ribbon for a few seconds, or
       // a permanent error message on top of the canvas if type=='error'.
       // If type=='warning', a yellow highlight color is used.
@@ -87,11 +87,10 @@
         canvas.className = "unity-mobile";
 		config.devicePixelRatio = 1;
       } else {
-	      console.log('hEREEEEE');
-		canvas.style.width = ((getHeight())+"px";
-        	canvas.style.height = (getHeight())+"px";
-		console.log('Width:  ' +  ((getHeight())*9/16) );
-		console.log('Height: ' +(getHeight()) );
+		canvas.style.width = ((getHeight()-getHeight()*.1)*9/16)+"px";
+        canvas.style.height = (getHeight()-getHeight()*.1)+"px";
+		console.log('Width:  ' +  ((getHeight()-getHeight()*.1)*9/16) );
+		console.log('Height: ' +(getHeight()-getHeight()*.1) );
       }
       loadingBar.style.display = "block";
 
@@ -111,7 +110,6 @@
             };
 
       document.body.appendChild(script);
-	setTimeout(() => {  webapp.expand(); }, 500);
 	  
 	  function getWidth() {
   return Math.max(
