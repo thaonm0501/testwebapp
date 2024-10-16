@@ -87,8 +87,10 @@
         canvas.className = "unity-mobile";
 		config.devicePixelRatio = 1;
       } else {
-		canvas.style.width = "540px";
-        canvas.style.height = "960px";
+		canvas.style.width = ((getHeight()-getHeight()*.1)*9/16)+"px";
+        canvas.style.height = (getHeight()-getHeight()*.1)+"px";
+		console.log('Width:  ' +  ((getHeight()-getHeight()*.1)*9/16) );
+		console.log('Height: ' +(getHeight()-getHeight()*.1) );
       }
       loadingBar.style.display = "block";
 
@@ -108,6 +110,26 @@
             };
 
       document.body.appendChild(script);
+	  
+	  function getWidth() {
+  return Math.max(
+    document.body.scrollWidth,
+    document.documentElement.scrollWidth,
+    document.body.offsetWidth,
+    document.documentElement.offsetWidth,
+    document.documentElement.clientWidth
+  );
+}
+
+function getHeight() {
+  return Math.max(
+    document.body.scrollHeight,
+    document.documentElement.scrollHeight,
+    document.body.offsetHeight,
+    document.documentElement.offsetHeight,
+    document.documentElement.clientHeight
+  );
+}
     </script>
   </body>
 </html>
